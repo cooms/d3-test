@@ -1,0 +1,22 @@
+{
+  "name": "d3-test",
+  "version": "1.0.0",
+  "description": "A steadily developing project for testing and implementing d3.js\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cooms/d3-test.git"
+  },
+  "author": "Tim Coomer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cooms/d3-test/issues"
+  },
+  "homepage": "https://github.com/cooms/d3-test#readme",
+  "dependencies": {
+    "cors": "^2.8.1"
+  }
+}

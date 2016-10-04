@@ -31,7 +31,7 @@
   var canvas = d3.select("body")
                 .append("svg")
                 .attr("width", 1000)
-                .attr("height", 1000)
+                .attr("height", 2000)
 
   // Create and append a circle
   var circle1 = canvas.append("circle")
@@ -47,25 +47,53 @@
                   .style("fill", "white")
 
 
-  // Create some data and visualize it on the page
+  // Create some data and visualize it on the page as horizontal rectangles scaling with length and color hue
   var dataArray = [15, 65, 100, 150, 225, 300, 500]
-
+  //
   var widthScale = d3.scaleLinear()
                       .domain([0, 500])
                       .range([0, 500])
 
+
+  //
+  // var bars = canvas.selectAll("rect")
+  //               .data(dataArray)
+  //               .enter()
+  //                 .append("rect")
+  //                 .attr("width", function(d) {
+  //                   return widthScale(d)
+  //                 })
+  //                 .attr("height", 50)
+  //                 .attr("fill", function(d) {
+  //                   return color(d)
+  //                 })
+  //                 .attr("y", function(d, i) {
+  //                   return i * 100
+  //                 })
+  //
+  //
+
+  // Same as above but vertical lines
+
+  var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+      y = d3.scaleLinear().rangeRound([height, 0]);
+
+  var heightScale = d3.scaleLinear()
+                      .domain([0, 500])
+                      .range([0, 500])
+
   var color = d3.scaleLinear()
-                .domain([0, 300])
+                .domain([0, 500])
                 .range(["red", "blue"])
 
-  var bars = canvas.selectAll("rect")
+  var bars2 = canvas.selectAll("rect")
                 .data(dataArray)
                 .enter()
                   .append("rect")
-                  .attr("width", function(d) {
-                    return widthScale(d)
+                  .attr("height", function(d) {
+                    return heightScale(d)
                   })
-                  .attr("height", 50)
+                  .attr("width", 100)
                   .attr("fill", function(d) {
                     return color(d)
                   })
