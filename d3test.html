@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> D3 test </title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+  <body>
+
+    <div class="div_1" id="div_1">
+
+    </div>
+
+
+
+  </body>
+  <script>
+
+  // Append a p tag to the body
+  d3.select("body")
+    .append("p")
+    .text("This text has been appended")
+
+  // Change color of all p tags with Hue/Color/Saturation
+  d3.selectAll("p").style("color", function() {
+    return "hsl(" + Math.random() * 360 + ",100%,50%)"
+  })
+
+  // Create and append an svg
+  // Create and append a canvas to work with
+  var canvas = d3.select("body")
+                .append("svg")
+                .attr("width", 1000)
+                .attr("height", 1000)
+
+  // Create and append a circle
+  var circle1 = canvas.append("circle")
+                  .attr("cx", 250)
+                  .attr("cy", 250)
+                  .attr("r", 50)
+                  .style("fill", "black")
+
+  var circle2 = canvas.append("circle")
+                  .attr("cx", 250)
+                  .attr("cy", 250)
+                  .attr("r", 45)
+                  .style("fill", "white")
+
+
+  // Create some data and visualize it on the page
+  var dataArray = [100, 150, 300]
+
+  var bars = canvas.selectAll("rect")
+                .data(dataArray)
+                .enter()
+                  .append("rect")
+                  .attr("width", function(d) {
+                    return d
+                  })
+                  .attr("height", 50)
+                  .attr("y", function(d, i) {
+                    return i * 100
+                  })
+  </script>
+</html>
