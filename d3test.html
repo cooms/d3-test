@@ -35,29 +35,40 @@
 
   // Create and append a circle
   var circle1 = canvas.append("circle")
-                  .attr("cx", 250)
-                  .attr("cy", 250)
+                  .attr("cx", 500)
+                  .attr("cy", 500)
                   .attr("r", 50)
                   .style("fill", "black")
 
   var circle2 = canvas.append("circle")
-                  .attr("cx", 250)
-                  .attr("cy", 250)
+                  .attr("cx", 500)
+                  .attr("cy", 500)
                   .attr("r", 45)
                   .style("fill", "white")
 
 
   // Create some data and visualize it on the page
-  var dataArray = [100, 150, 300]
+  var dataArray = [15, 65, 100, 150, 225, 300, 500]
+
+  var widthScale = d3.scaleLinear()
+                      .domain([0, 500])
+                      .range([0, 500])
+
+  var color = d3.scaleLinear()
+                .domain([0, 300])
+                .range(["red", "blue"])
 
   var bars = canvas.selectAll("rect")
                 .data(dataArray)
                 .enter()
                   .append("rect")
                   .attr("width", function(d) {
-                    return d
+                    return widthScale(d)
                   })
                   .attr("height", 50)
+                  .attr("fill", function(d) {
+                    return color(d)
+                  })
                   .attr("y", function(d, i) {
                     return i * 100
                   })
